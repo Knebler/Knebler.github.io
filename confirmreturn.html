@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+				initial-scale=1.0">
+				
+	<title>AZoom Rentals and Services</title>
+	<link rel="stylesheet" href="css/generalstylesheet.css">
+	<link rel="stylesheet" href="css/confirmrentalstylesheet.css">
+</head>
+<body>
+    <section id="pageHeader">
+        <div class="logoContainer">
+            <img src="img\companylogo.png" alt="Company Logo" class="coyLogoSpecial"><br>
+        </div>
+        <h1>Please allow this QR code to be scanned by the employee onsite or the unmanned scanner to return the vehicle.</h1>
+        <div class="qrCodeContainer">
+            <img src="img/frame.png" alt="Scannable QR Code"><br>
+        </div>
+        <h2>Vehicle ID: 74109273489</h2>
+    </section>
+
+    <section id="pageBody">
+        <div class="returnButtonContainer">
+            <button class="returnButton" onclick="homePageOpen()">Return To Home Page</button>
+        </div>
+    </section>
+</body>
+<footer>
+    <section class="footerContainer">
+		<div class="footerLinkContainer">
+			<ul class="footerNavBar"> <!-- Add in footer appendix links for legal purposes -->
+				<li><a href="#"><h3>Business Certificate</h3></a></li>
+				<li><a href="#"><h3>Legal</h3></a></li>
+				<li><a href="#"><h3>Staff Portal</h3></a></li>
+				<li><a href="#"><h3>References</h3></a></li>
+			</ul>
+		</div>
+		
+		<div class="footerSocMedandPayContainer">
+			<div class="footerSocMedLinks">
+				<a href="https://www.whatsapp.com/"><img src="img/whatsapp.png" class="socialMediaLogo"></a>
+				<a href="https://www.instagram.com/"><img src="img/instagram.png" class="socialMediaLogo"></a>
+				<a href="https://www.facebook.com/"><img src="img/facebook.png" class="socialMediaLogo"></a>
+				<a href="https://x.com/"><img src="img/twitter.png" class="socialMediaLogo"></a>
+			</div>
+			
+			<div class="footerPaymentLogos">
+				<img src="img/paylogos/visa.svg" class="paymentLogo">
+				<img src="img/paylogos/mastercard.svg" class="paymentLogo">
+				<img src="img/paylogos/american-express.svg" class="paymentLogo">
+				<img src="img/paylogos/payment badge_white.svg" class="paymentLogo">
+			</div>
+		</div>
+		
+
+		
+		<div class="footerCopyrightContainer">
+			<h4> No copyright @ 2024 </h4>
+		</div>
+	</section>
+</footer>
+
+<script>
+    function openDirectLink(linkString)
+	{
+		window.location.href = linkString;
+	}
+	
+	function homePageOpen()
+	{
+		openDirectLink("homepage.html");
+	}
+
+</script>
+
+</html>

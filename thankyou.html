@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+				initial-scale=1.0">
+				
+	<title>Rent Placement Success</title>
+	<link rel="stylesheet" href="css/generalstylesheet.css">
+	<link rel="stylesheet" href="css/thankyoustylesheet.css">
+</head>
+
+<body>
+    <div class="pageMain">
+        <div class="logoContainer">
+            <img src="img\companylogo.png" alt="Company Logo" class="coyLogoSpecial"><br>
+        </div>
+        <h1>THANK YOU FOR CHOOSING US!</h1>
+        <h2>Please proceed to Location 2 to personally inspect your rented vehicle(s) and drive off immediately!</h2>
+        <h3>Transaction ID: 8876</h3>
+        <div class="returnButtonContainer">
+            <button class="returnButton" onclick="accountInfoPageOpen()">View Account</button>
+        </div>
+    </div>
+</body>
+
+<footer>
+
+</footer>
+
+<script>
+
+
+    function openDirectLink(linkString)
+	{
+		window.location.href = linkString;
+	}
+	
+	function accountInfoPageOpen()
+	{
+		openDirectLink("accountinfo.html");
+	}
+</script>
+</html>

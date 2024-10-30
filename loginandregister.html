@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width-device=width,
+				initial-scale=1.0">
+	
+	<title>AZoom Account Greeter</title>
+	<link rel="stylesheet" href="css/generalstylesheet.css">
+	<link rel="stylesheet" href="css/loginandregisterstylesheet.css">
+	
+</head>
+
+<body>
+	<!--Top of the page-->
+	<section id="pageHead">
+		<div class="topContainer">
+			<button class="coyLogoImg" onclick="homePageOpen()"><img src="img\companylogo.png" alt="Company Logo"></button>
+
+			<div class="topIcons">
+				<button class="dropdownIcons" id="accountLogo" onclick="accountPageOpen()"><img src="img\account.png" alt="Account Button" ></button> <!-- Add dropdown menu to show currently logged in user, if none just display a prompt for the visitor to register or log in -->
+					<div class="dropdownMenu">
+						<img src="" class="accountDropdownUserDispImg">
+						<h2 class="accountDropdownUserStatus">Guest</h2>
+					</div>
+			</div>
+			<div class="topIcons">
+				<button class="dropdownIcons" id="cartLogo" onclick="cartPageOpen()"><img src="img\grocery-store.png" alt="Cart Button"></button>
+				<div class="cartItemContainer">
+                    <h2 id="cartItemDisplay"></h2>
+                </div>
+			</div>
+			<div class="topIcons">
+				<button class="dropdownIcons" id="searchLogo" onclick="searchPageOpen()"><img src="img\search.png" alt="Search Button"></button>
+				<div class="dropdownMenu">
+					
+				</div>
+			</div>
+		</div>
+
+		<div id="navBarContainer">
+			<ul class="headerNavBar">
+				<li><a href="homepage.html">Home Page</a></li>
+				<li><a href="rentals.html">Rental Library</a></li> <!-- Add dropdown menu to show subcategories which reflect available options on the page itself -->
+				<li class="headerNavBarRightMostLeft"><a href="services.html">Service Listings</a></li> <!-- Same thing here -->
+				<li class="headerNavBarAbout"><a href="about.html">About</a></li>
+			</ul>
+		</div>
+	</section>
+
+	<!--Body of the page-->
+	<section class="loginPage">
+		<div class="loginContainer">
+			<form class="loginField">
+				<label for="fEmail">Enter Email Here:</label><br>
+				<input type="text" id="fEmail"><br>
+				<label for="fPassword">Password:</label><br>
+				<input type="text" id="fPassword"><br>
+			</form>
+
+			<button class="loginConfirm" onclick="accountInfoPageOpen()">LOGIN</button>
+		</div>
+
+		<div class="switchContainer">
+			<button class="switchButton" onclick="">Don't have an account?</button>	
+		</div>
+	</section>
+
+	<section class="registerPage">
+		<div class="registerContainer">
+			<form class="registerField">
+				<label for="fEmail">Register Email Here:</label><br>
+				<input type="text" id="fEmail"><br>
+				<label for="fPassword">New Password:</label><br>
+				<input type="text" id="fPassword"><br>
+			</form>
+
+			<button class="registerConfirm">CREATE ACCOUNT</button>
+		</div>
+
+		<div class="switchContainer">
+			<button class="switchButton">Already have an account?</button>	
+		</div>
+	</section>
+</body>
+
+<footer>
+	<!--Foot of the page-->
+	<section class="footerContainer">
+		<div class="footerLinkContainer">
+			<ul class="footerNavBar"> <!-- Add in footer appendix links for legal purposes -->
+				<li><a href="#"><h3>Business Certificate</h3></a></li>
+				<li><a href="#"><h3>Legal</h3></a></li>
+				<li><a href="#"><h3>Staff Portal</h3></a></li>
+				<li><a href="#"><h3>References</h3></a></li>
+			</ul>
+		</div>
+		
+		<div class="footerSocMedandPayContainer">
+			<div class="footerSocMedLinks">
+				<a href="#"><img src="img/whatsapp.png" class="socialMediaLogo"></a>
+				<a href="#"><img src="img/instagram.png" class="socialMediaLogo"></a>
+				<a href="#"><img src="img/facebook.png" class="socialMediaLogo"></a>
+				<a href="#"><img src="img/twitter.png" class="socialMediaLogo"></a>
+			</div>
+			
+			<div class="footerPaymentLogos">
+				<img src="img/paylogos/visa.svg" class="paymentLogo">
+				<img src="img/paylogos/mastercard.svg" class="paymentLogo">
+				<img src="img/paylogos/american-express.svg" class="paymentLogo">
+				<img src="img/paylogos/payment badge_white.svg" class="paymentLogo">
+			</div>
+		</div>
+		
+
+		
+		<div class="footerCopyrightContainer">
+			<h4> No copyright @ 2024 </h4>
+		</div>
+	</section>
+</footer>
+
+<script>
+	// Variable Initialization
+	let loginPage = document.getElementById("loginPage");
+	let registerPage = document.getElementById("registerPage");
+
+	const cAccHeader = "cAccountUsername";
+	const cCartHeader = "cCartItems";
+	let cartCount = document.getElementById("cartItemDisplay");
+
+	//Logic
+	updateCartNumber();
+	// Function Initialization
+	function openDirectLink(linkString)
+	{
+		window.location.href = linkString;
+	}
+	
+	function homePageOpen()
+	{
+		openDirectLink("homepage.html");
+	}
+
+	function accountPageOpen()
+	{
+		openDirectLink("loginandregister.html");
+	}
+	
+	function cartPageOpen()
+	{
+		openDirectLink("cart.html");
+	}
+	
+	function searchPageOpen()
+	{
+		openDirectLink("searchpage.html");
+	}
+
+	function accountInfoPageOpen()
+	{
+		openDirectLink("accountinfo.html");
+	}
+
+
+	function accountCookieCreator(cName)
+	{
+		document.cookie = "cAccountUsername" + "=" + cName;
+	}
+
+	function updateCartNumber()
+    {
+        let cCartItems = getCartStatus(cCartHeader);
+		let ca = cCartItems.split("=");
+		let count = 0;
+		if (ca[1] != "")
+		{
+       		count = ca[1].split(",").length;
+		}
+    //    console.log(count);
+        cartCount.innerHTML = count;
+	//	getCartArray();
+        return;
+    }
+
+	function getCartStatus()
+    {
+		let cookieName = cCartHeader + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+
+		let ca = decodedCookie.split(";");
+		for (let i = 0; i < ca.length; i++)	
+		{
+			let c = ca[i];
+			while (c.charAt(0) == ' ')
+			{
+				c = c.substring(1);
+			}
+			if (c.indexOf(cookieName) == 0) 
+			{
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+
+</script>
+
+</html>

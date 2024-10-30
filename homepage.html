@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+				initial-scale=1.0">
+				
+	<title>AZoom Rentals and Services</title>
+	<link rel="stylesheet" href="css/generalstylesheet.css">
+	<link rel="stylesheet" href="css/homepagestylesheet.css">
+</head>
+	
+<body>
+	
+	<section id="pageHead">
+		<div class="topContainer">
+			<button class="coyLogoImg" onclick="homePageOpen()"><img src="img\companylogo.png" alt="Company Logo"></button>
+	
+			<div class="topIcons">
+				<button class="dropdownIcons" id="accountLogo" onclick="accountPageOpen()"><img src="img\account.png" alt="Account Button" ></button> <!-- Add dropdown menu to show currently logged in user, if none just display a prompt for the visitor to register or log in -->
+					<div class="dropdownMenu">
+						<img src="" class="accountDropdownUserDispImg">
+						<h2 class="accountDropdownUserStatus">Guest</h2>
+
+					</div>
+			</div>
+			<div class="topIcons">
+				<button class="dropdownIcons" id="cartLogo" onclick="cartPageOpen()"><img src="img\grocery-store.png" alt="Cart Button"></button>
+				<div class="cartItemContainer">
+                    <h2 id="cartItemDisplay"></h2>
+                </div>
+			</div>
+			<div class="topIcons">
+				<button class="dropdownIcons" id="searchLogo" onclick="searchPageOpen()"><img src="img\search.png" alt="Search Button"></button>
+					<div class="dropdownMenu">
+						
+					</div>
+			</div>
+		</div>
+	
+		<div id="navBarContainer">
+			<ul class="headerNavBar">
+				<li><a href="homepage.html">Home Page</a></li>
+				<li><a href="rentals.html">Rental Library</a></li> <!-- Add dropdown menu to show subcategories which reflect available options on the page itself -->
+				<li class="headerNavBarRightMostLeft"><a href="services.html">Service Listings</a></li> <!-- Same thing here -->
+				<li class="headerNavBarAbout"><a href="about.html">About</a></li>
+			</ul>
+		</div>
+	
+		<!-- The home page exclusive section -->
+<!--		<div id="headSlidingGallery"> -->
+			<!-- Insert a large sliding gallery displaying "popular" rental models -->
+			<div class="attractiveDisp">
+				<div class="attractiveDispSlides fade">
+					<img src="img/vehicles/BYD/BYD_ATTO3.png" class="attractiveDispImg">
+					<h1 class="attractiveDispCaptionText">BYD Atto 3</h1>
+					<button class="attractiveDispSlidesButton" onclick="carInfoPageOpen('atto3')">RENT NOW</button>
+					
+				</div>
+				
+				<div class="attractiveDispSlides fade">
+					<img src="img/vehicles/BYD/BYD_DOLPHIN.png" class="attractiveDispImg">
+					<h1 class="attractiveDispCaptionText">BYD Dolphin</h1>
+					<button class="attractiveDispSlidesButton" onclick="carInfoPageOpen('dolphin')">RENT NOW</button>
+				</div>
+				
+				<div class="attractiveDispSlides fade">
+					<img src="img/vehicles/BYD/BYD_HAN.png" class="attractiveDispImg">
+					<h1 class="attractiveDispCaptionText">BYD Han</h1>
+					<button class="attractiveDispSlidesButton" onclick="carInfoPageOpen('han')">RENT NOW</button>
+					
+				</div>
+				
+				<div class="attractiveDispSlides fade">
+					<img src="img/vehicles/BYD/BYD_SEAL.png" class="attractiveDispImg">
+					<h1 class="attractiveDispCaptionText">BYD Seal</h1>
+					<button class="attractiveDispSlidesButton" onclick="carInfoPageOpen('seal')">RENT NOW</button>
+				</div>
+			
+			<a class="attractiveDispPrev" onclick="mainSlideUseChange(-1)"><h1><</h1></a>
+			<a class="attractiveDispNext" onclick="mainSlideUseChange(1)"><h1>></h1></a>
+			
+			<div style="text-align:center">
+				<span class="attractiveDispDot" onclick="mainSlideUseExactChange(1)"></span>
+				<span class="attractiveDispDot" onclick="mainSlideUseExactChange(2)"></span>
+				<span class="attractiveDispDot" onclick="mainSlideUseExactChange(3)"></span>
+				<span class="attractiveDispDot" onclick="mainSlideUseExactChange(3)"></span>
+			</div>
+			
+			</div>
+<!--		</div>-->
+	</section>
+
+	<section id="pageBodyUpper">
+		<div id="bodyUpperDisp">
+		
+		<h1 class="sectionDividingText"> Popular Picks </h1>
+			<!-- Insert a horizontal set of individual images that depict rental cars with each portrait -->
+			<div class="miniListingContainer">
+				<div class="singleMLCCard">
+					<img src="img/vehicles/BYD/BYD_ATTO3.png">
+					<h2>BYD Atto 3</h2>
+					<h3>$50 / hr</h3>
+					<button type="button" class="singleMLCCardLinkButton" onclick="carInfoPageOpen('atto3')">More Info</button>
+				</div>
+				<div class="singleMLCCard">
+					<img src="img/vehicles/BYD/BYD_SEALION_7.png">
+					<h2>BYD Sealion 7</h2>
+					<h3>$20 / hr</h3>
+					<button type="button" class="singleMLCCardLinkButton" onclick="carInfoPageOpen('sealion')">More Info</button>
+				</div>
+				<div class="singleMLCCard">
+					<img src="img/vehicles/BYD/BYD_TANG_2024.png">
+					<h2>BYD Tang 2024</h2>
+					<h3>$30 / hr</h3>
+					<button type="button" class="singleMLCCardLinkButton" onclick="carInfoPageOpen('tang')">More Info</button>
+				</div>
+				<div class="singleMLCCard">
+					<img src="img/vehicles/BYD/BYD_DOLPHIN.png">
+					<h2>BYD Dolphin</h2>
+					<h3>$50 / hr</h3>
+					<button type="button" class="singleMLCCardLinkButton" onclick="carInfoPageOpen('dolphin')">More Info</button>
+				</div>
+				<div class="singleMLCCard">
+					<img src="img/vehicles/BYD/BYD_SEAL_U_EV.png">
+					<h2>BYD Seal U EV</h2>
+					<h3>$50 / hr</h3>
+					<button type="button" class="singleMLCCardLinkButton" onclick="carInfoPageOpen('sealuev')">More Info</button>
+				</div>
+				<div class="singleMLCCard">
+					<img src="img/vehicles/BYD/BYD_HAN.png">
+					<h2>BYD Han</h2>
+					<h3>$50 / hr</h3>
+					<button type="button" class="singleMLCCardLinkButton" onclick="carInfoPageOpen('han')">More Info</button>
+				</div>
+			</div>
+	</section>
+	
+	<section id="pageBodyLower">
+		<div id="bodyLowerDisp">
+			<h1 class="sectionDividingText"> Our Reviews </h1>
+			<!-- Insert the convincing section filled with reviews and a write-up from the company for customers to see why they're the first choice -->
+			<div class="reviewContainer">
+				<div class="singleRCCard">
+					<h2>Sample Review Title</h2>
+					<div class="reviewContainerParagraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae nibh vel arcu placerat molestie sed sed nibh. Maecenas ut ultricies turpis. Cras ac quam eros.</div>
+					<h3>- Sample Reviewer</h3>
+				</div>
+
+				<div class="singleRCCard">
+					<h2>Sample Review Title</h2>
+					<div class="reviewContainerParagraph">Curabitur porttitor vulputate sapien ac tincidunt. Phasellus ipsum urna, efficitur quis ante et, varius facilisis urna. Pellentesque venenatis pellentesque arcu eu consectetur.</div>
+					<h3>- Sample Reviewer</h3>
+				</div>
+
+				<div class="singleRCCard">
+					<h2>Sample Review Title</h2>
+					<div class="reviewContainerParagraph">Praesent vitae tellus mattis, pellentesque nulla vitae, ultrices tellus. Aliquam metus velit, auctor sed justo sit amet, molestie posuere ligula.</div>
+					<h3>- Sample Reviewer</h3>
+				</div>
+
+				<div class="singleRCCard">
+					<h2>Sample Review Title</h2>
+					<div class="reviewContainerParagraph">Nullam pellentesque leo sit amet dolor finibus consectetur. Nulla mollis mauris id efficitur fringilla. Phasellus vel blandit ligula.</div>
+					<h3>- Sample Reviewer</h3>
+				</div>
+
+				<div class="singleRCCard">
+					<h2>Sample Review Title</h2>
+					<div class="reviewContainerParagraph">Cras tristique aliquam diam, eget egestas augue luctus vitae. Aliquam congue metus eu nulla accumsan, vel euismod justo gravida. Vivamus ultricies tellus sit amet diam malesuada dictum eu sit amet lectus.</div>
+					<h3>- Sample Reviewer</h3>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!-- End of the homepage exclusive section -->
+</body>
+
+<footer>
+	<section class="footerContainer">
+		<div class="footerLinkContainer">
+			<ul class="footerNavBar"> <!-- Add in footer appendix links for legal purposes -->
+				<li><a href="#"><h3>Business Certificate</h3></a></li>
+				<li><a href="#"><h3>Legal</h3></a></li>
+				<li><a href="#"><h3>Staff Portal</h3></a></li>
+				<li><a href="#"><h3>References</h3></a></li>
+			</ul>
+		</div>
+		
+		<div class="footerSocMedandPayContainer">
+			<div class="footerSocMedLinks">
+				<a href="https://www.whatsapp.com/"><img src="img/whatsapp.png" class="socialMediaLogo"></a>
+				<a href="https://www.instagram.com/"><img src="img/instagram.png" class="socialMediaLogo"></a>
+				<a href="https://www.facebook.com/"><img src="img/facebook.png" class="socialMediaLogo"></a>
+				<a href="https://x.com/"><img src="img/twitter.png" class="socialMediaLogo"></a>
+			</div>
+			
+			<div class="footerPaymentLogos">
+				<img src="img/paylogos/visa.svg" class="paymentLogo">
+				<img src="img/paylogos/mastercard.svg" class="paymentLogo">
+				<img src="img/paylogos/american-express.svg" class="paymentLogo">
+				<img src="img/paylogos/payment badge_white.svg" class="paymentLogo">
+			</div>
+		</div>
+		
+
+		
+		<div class="footerCopyrightContainer">
+			<h4> No copyright @ 2024 </h4>
+		</div>
+	</section>
+</footer>
+
+<script>
+
+	// Variable Initializing
+	let currentSlideNum = 1;
+	//mainSlideUse(currentSlideNum);
+
+	const cAccHeader = "cAccountUsername";
+	const cCartHeader = "cCartItems";
+	let cartCount = document.getElementById("cartItemDisplay");
+
+	// Main slide gallery
+//	mainSlideUseAuto(currentSlideNum);
+	mainSlideUse(currentSlideNum);
+	updateCartNumber();
+	
+	// Functions Below
+	
+
+	// Slideshow Logic
+	function mainSlideUseChange(numChanger)
+	{
+		mainSlideUse(currentSlideNum += numChanger);
+		console.log(currentSlideNum);
+	}
+	
+	function mainSlideUseExactChange(numChanger)
+	{
+		mainSlideUse(currentSlideNum = numChanger);
+		console.log(currentSlideNum);
+	}
+	
+	function mainSlideUse(slideNum)
+	{
+		let mainSlideIterator;
+		let mainSlides = document.getElementsByClassName("attractiveDispSlides");
+		let mainSlidesDots = document.getElementsByClassName("attractiveDispDot");
+
+		if (slideNum > mainSlides.length)
+		{
+			currentSlideNum = 1;
+		}
+		
+		if (slideNum < 1)
+		{
+			currentSlideNum = mainSlides.length;
+		}
+		
+		for (mainSlideIterator = 0; mainSlideIterator < mainSlides.length; mainSlideIterator++)
+		{
+			mainSlides[mainSlideIterator].style.display = "none";
+		}
+		
+		for (mainSlideIterator = 0; mainSlideIterator < mainSlidesDots.length; mainSlideIterator++)
+		{
+			mainSlidesDots[mainSlideIterator].className = mainSlidesDots[mainSlideIterator].className.replace(" active", "");
+		}
+		
+		mainSlides[currentSlideNum-1].style.display = "block";
+		mainSlidesDots[currentSlideNum-1].className += " active";
+		//console.log(currentSlideNum);
+	}
+	
+	function mainSlideUseAuto(i)
+	{
+		i++;
+		
+		mainSlideUse(i);
+		
+		setTimeout(mainSlideUseAuto(i), 2);
+	}
+	// Button functions
+	function openDirectLink(linkString)
+	{
+		window.location.href = linkString;
+	}
+	
+	function homePageOpen()
+	{
+		openDirectLink("homepage.html");
+	}
+
+	function accountPageOpen()
+	{
+		openDirectLink("loginandregister.html");
+	}
+	
+	function cartPageOpen()
+	{
+		openDirectLink("cart.html");
+	}
+	
+	function searchPageOpen()
+	{
+		openDirectLink("searchpage.html");
+	}
+
+	function carInfoPageOpen(carName)
+	{
+		switch (carName)
+		{
+			case "atto3":
+				{
+					openDirectLink("detailspages/byd_atto3.html");
+				}
+				break;
+			case "dolphin":
+				{
+					openDirectLink("detailspages/byd_dolphin.html");
+				}
+				break;
+			case "han":
+				{
+					openDirectLink("detailspages/byd_han.html");
+				}
+				break;
+			case "seal":
+				{
+					openDirectLink("detailspages/byd_seal.html");
+				}
+				break;
+			case "sealuev":
+				{
+					openDirectLink("detailspages/byd_sealuev.html");
+				}
+				break;
+			case "sealion":
+				{
+					openDirectLink("detailspages/byd_sealion.html");
+				}
+				break;
+			case "tang":
+				{
+					openDirectLink("detailspages/byd_tang.html");
+				}
+				break;
+			default:
+				{
+					console.log("Failed to open any link.");
+				}
+				break;
+		}
+	}
+
+	//Cookie grabber
+	function getAccountStatus()
+	{
+		let cookieName = cAccHeader + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+
+		let ca = decodedCookie.split("=");
+		for (let i = 0; i < ca.length; i++)
+			{
+			let c = ca[i];
+			while (c.charAt(0) == ' ')
+			{
+				c = c.substring(1);
+			}
+			if (c.indexOf(cookieName) == 0)
+			{
+				return;
+			}
+		}
+
+		return;
+	}
+
+	function getCartStatus()
+    {
+		let cookieName = cCartHeader + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+
+		let ca = decodedCookie.split(";");
+		for (let i = 0; i < ca.length; i++)	
+		{
+			let c = ca[i];
+			while (c.charAt(0) == ' ')
+			{
+				c = c.substring(1);
+			}
+			if (c.indexOf(cookieName) == 0) 
+			{
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+
+    function updateCartNumber()
+    {
+        let cCartItems = getCartStatus(cCartHeader);
+		let ca = cCartItems.split("=");
+		let count = 0;
+		if (ca[1] != "")
+		{
+       		count = ca[1].split(",").length;
+		}
+    //    console.log(count);
+        cartCount.innerHTML = count;
+	//	getCartArray();
+        return;
+    }
+
+
+</script>
+
+</html>

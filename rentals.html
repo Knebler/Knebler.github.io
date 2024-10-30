@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+				initial-scale=1.0">
+				
+	<title>AZoom Rental Selection</title>
+	<link rel="stylesheet" href="css/generalstylesheet.css">
+	<link rel="stylesheet" href="css/rentalstylesheet.css">
+</head>
+
+<body>
+
+	<section id="pageHead">
+	
+		<div class="topContainer">
+			<button class="coyLogoImg" onclick="homePageOpen()"><img src="img/companylogo.png" alt="Company Logo"></button>
+	
+			<div class="topIcons">
+				<button class="dropdownIcons" id="accountLogo" onclick="accountPageOpen()"><img src="img/account.png" alt="Account Button" ></button> <!-- Add dropdown menu to show currently logged in user, if none just display a prompt for the visitor to register or log in -->
+					<div class="dropdownMenu">
+						<img src="" class="accountDropdownUserDispImg">
+						<h2 class="accountDropdownUserStatus">Guest</h2>
+
+					</div>
+			</div>
+			<div class="topIcons">
+				<button class="dropdownIcons" id="cartLogo" onclick="cartPageOpen()"><img src="img/grocery-store.png" alt="Cart Button"></button>
+				<div class="cartItemContainer">
+                    <h2 id="cartItemDisplay"></h2>
+                </div>
+			</div>
+			<div class="topIcons">
+				<button class="dropdownIcons" id="searchLogo" onclick="searchPageOpen()"><img src="img/search.png" alt="Search Button"></button>
+					<div class="dropdownMenu">
+						
+					</div>
+			</div>
+		</div>
+	
+		<div id="navBarContainer">
+			<ul class="headerNavBar">
+				<li><a href="homepage.html">Home Page</a></li>
+				<li><a href="rentals.html">Rental Library</a></li> <!-- Add dropdown menu to show subcategories which reflect available options on the page itself -->
+				<li class="headerNavBarRightMostLeft"><a href="services.html">Service Listings</a></li> <!-- Same thing here -->
+				<li class="headerNavBarAbout"><a href="about.html">About</a></li>
+			</ul>
+		</div>
+	
+	</section>
+	
+	<section id="pageBody">
+		<div class="sorterContainer" id="leftBody">
+			<h1> Sort By </h1>
+			<form id="sorterList">
+				<input type="checkbox" id="vehicle1" name="vehicle" value="Sedan" onclick="sortCheckboxHandler(this)">
+				<label for="vehicle1"> Sedans </label><br>
+		<!--		<input type="checkbox" id="vehicle2" name="vehicle" value="Minivan" onclick="sortCheckboxHandler(this)">
+				<label for="vehicle2"> Minivans </label><br> -->
+				<input type="checkbox" id="vehicle2" name="vehicle" value="Suv" onclick="sortCheckboxHandler(this)">
+				<label for="vehicle2"> SUVs </label><br>
+				
+			</form>
+		</div>
+		<div class="row" id="rightBody">
+			<!-- Populate the area with cards that hold the rental cars -->
+			<div class="column sedan">
+				<div class="storeDivDisplay">
+					<img src="img/vehicles/BYD/BYD_SEAL.png" alt="Display the car's photo" class="cardDisplay">
+					<h2 class="cardTitle">BYD Seal</h2>
+					<h3 class="cardPrice">$20.00 / hr</h3>
+					<button class="cardLinkButton" onclick="carInfoPageOpen('seal')">More Info</button>
+				</div>
+			</div>
+
+			<div class="column sedan">
+				<div class="storeDivDisplay">
+					<img src="img/vehicles/BYD/BYD_HAN.png" alt="Display the car's photo" class="cardDisplay">
+					<h2 class="cardTitle">BYD Han</h2>
+					<h3 class="cardPrice">$35.00 / hr</h3>
+					<button class="cardLinkButton" onclick="carInfoPageOpen('han')">More Info</button>
+				</div>
+			</div>
+
+			<div class="column suv">
+				<div class="storeDivDisplay">
+					<img src="img/vehicles/BYD/BYD_ATTO3.png" alt="Display the car's photo" class="cardDisplay">
+					<h2 class="cardTitle">BYD Atto3</h2>
+					<h3 class="cardPrice">$30.00 / hr</h3>
+					<button class="cardLinkButton" onclick="carInfoPageOpen('atto3')">More Info</button>
+				</div>
+			</div>
+
+			<div class="column suv">
+				<div class="storeDivDisplay">
+					<img src="img/vehicles/BYD/BYD_DOLPHIN.png" alt="Display the car's photo" class="cardDisplay">
+					<h2 class="cardTitle">BYD Dolphin</h2>
+					<h3 class="cardPrice">$30.00 / hr</h3>
+					<button class="cardLinkButton" onclick="carInfoPageOpen('dolphin')">More Info</button>
+				</div>
+			</div>
+
+			<div class="column suv">
+				<div class="storeDivDisplay">
+					<img src="img/vehicles/BYD/BYD_SEAL_U_EV.png" alt="Display the car's photo" class="cardDisplay">
+					<h2 class="cardTitle">BYD Seal U EV</h2>
+					<h3 class="cardPrice">$30.00 / hr</h3>
+					<button class="cardLinkButton" onclick="carInfoPageOpen('sealuev')">More Info</button>
+				</div>
+			</div>
+
+			<div class="column suv">
+				<div class="storeDivDisplay">
+					<img src="img/vehicles/BYD/BYD_SEALION_7.png" alt="Display the car's photo" class="cardDisplay">
+					<h2 class="cardTitle">BYD Sealion 7</h2>
+					<h3 class="cardPrice">$30.00 / hr</h3>
+					<button class="cardLinkButton" onclick="carInfoPageOpen('sealion')">More Info</button>
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+
+</body>
+
+<footer>
+
+	<section id="footerContainer">
+		<section class="footerContainer">
+			<div class="footerLinkContainer">
+				<ul class="footerNavBar"> <!-- Add in footer appendix links for legal purposes -->
+					<li><a href="#"><h3>Business Certificate</h3></a></li>
+					<li><a href="#"><h3>Legal</h3></a></li>
+					<li><a href="#"><h3>Staff Portal</h3></a></li>
+					<li><a href="#"><h3>References</h3></a></li>
+				</ul>
+			</div>
+			
+			<div class="footerSocMedandPayContainer">
+				<div class="footerSocMedLinks">
+					<a href="#"><img src="img/whatsapp.png" class="socialMediaLogo"></a>
+					<a href="#"><img src="img/instagram.png" class="socialMediaLogo"></a>
+					<a href="#"><img src="img/facebook.png" class="socialMediaLogo"></a>
+					<a href="#"><img src="img/twitter.png" class="socialMediaLogo"></a>
+				</div>
+				
+				<div class="footerPaymentLogos">
+					<img src="img/paylogos/visa.svg" class="paymentLogo">
+					<img src="img/paylogos/mastercard.svg" class="paymentLogo">
+					<img src="img/paylogos/american-express.svg" class="paymentLogo">
+					<img src="img/paylogos/payment badge_white.svg" class="paymentLogo">
+				</div>
+			</div>
+			
+	
+			
+			<div class="footerCopyrightContainer">
+				<h4> No copyright @ 2024 </h4>
+			</div>
+	</section>
+	
+</footer>
+
+<script>
+	// Variable initialization
+	let sortList = document.getElementById("sorterList");
+	let sortCheckBox0 = document.getElementById("vehicle1");
+//	let sortCheckBox1 = document.getElementById("vehicle2");
+	let sortCheckBox1 = document.getElementById("vehicle2");
+
+	let sortContainer = document.getElementById("leftBody");
+	let galleryContainer = document.getElementById("rightBody");
+
+	const cAccHeader = "cAccountUsername";
+	const cCartHeader = "cCartItems";
+	let cartCount = document.getElementById("cartItemDisplay");
+	
+
+	// Logic
+	filterSelection("all");
+	updateCartNumber();
+
+	// Function initialization
+
+	function filterSelection(selectionType)
+	{
+		let galleryColumns = document.getElementsByClassName("column");
+		let elementIterator;
+
+		if (selectionType == "all")
+		{
+			selectionType = "";
+		}	
+
+		for (elementIterator = 0; elementIterator < galleryColumns.length; elementIterator++)
+		{
+			removeClass(galleryColumns[elementIterator], "show");
+			if (galleryColumns[elementIterator].className.indexOf(selectionType) > -1)
+			{
+				addClass(galleryColumns[elementIterator], "show");
+			}
+		}
+	}
+
+	function removeClass(element, name)
+	{
+		let iterator;
+		let arr1 = element.className.split(" ");
+		let arr2 = name.split(" ");
+
+		for (iterator = 0; iterator < arr2.length; iterator++)
+		{
+			while (arr1.indexOf(arr2[iterator]) > -1) 
+			{
+				arr1.splice(arr1.indexOf(arr2[iterator]), 1);     
+			}
+ 		 }
+
+ 		 element.className = arr1.join(" ");
+	}
+
+	function addClass(element, name)
+	{
+		let iterator;
+		let arr1 = element.className.split(" ");
+		let arr2 = name.split(" ");
+
+		for (iterator = 0; iterator < arr2.length; iterator++) 
+		{
+			if (arr1.indexOf(arr2[iterator]) == -1)
+			{
+				element.className += " " + arr2[iterator];
+			}
+		}
+	}
+
+	function sortCheckboxHandler(theBox)
+	{
+		if (theBox.checked)
+		{
+			switch (theBox.id)
+			{
+				case "vehicle1":
+					{
+						sortCheckBox0.checked = true;
+						sortCheckBox1.checked = false;
+						filterSelection("sedan");
+					}
+					break;
+				case "vehicle2":
+					{
+						sortCheckBox0.checked = false;
+						sortCheckBox1.checked = true;
+						filterSelection("suv");
+					}
+					break;
+					break;
+					default:
+					{
+
+					}
+					break;
+			}
+			
+		}
+		else
+		{
+			filterSelection("all");
+		}
+	}
+
+	function openLink(linkString)
+	{
+		window.location.href = linkString;
+	}
+
+	function carInfoPageOpen(carName)
+	{
+		switch (carName)
+		{
+			case "atto3":
+				{
+					openDirectLink("detailspages/byd_atto3.html");
+				}
+				break;
+			case "dolphin":
+				{
+					openDirectLink("detailspages/byd_dolphin.html");
+				}
+				break;
+			case "han":
+				{
+					openDirectLink("detailspages/byd_han.html");
+				}
+				break;
+			case "seal":
+				{
+					openDirectLink("detailspages/byd_seal.html");
+				}
+				break;
+			case "sealuev":
+				{
+					openDirectLink("detailspages/byd_sealuev.html");
+				}
+				break;
+			case "sealion":
+				{
+					openDirectLink("detailspages/byd_sealion.html");
+				}
+				break;
+			case "tang":
+				{
+					openDirectLink("detailspages/byd_tang.html");
+				}
+				break;
+			default:
+				{
+					console.log("Failed to open any link.");
+				}
+				break;
+		}
+	}
+
+	function boolDisplayVisibleStatus(theObject)
+	{
+		if (theObject.style.display == "block" && theObject.style.display == "block-inline")
+		{
+			return true;
+		}
+		else if (theObject.style.display == "none")
+		{
+			return false;
+		}
+
+	}
+	
+	function openDirectLink(linkString)
+	{
+		window.location.href = linkString;
+	}
+	
+	function homePageOpen()
+	{
+		openDirectLink("homepage.html");
+	}
+
+	function accountPageOpen()
+	{
+		openDirectLink("loginandregister.html");
+	}
+	
+	function cartPageOpen()
+	{
+		openDirectLink("cart.html");
+	}
+	
+	function searchPageOpen()
+	{
+		openDirectLink("searchpage.html");
+	}
+
+	function getCartStatus()
+    {
+		let cookieName = cCartHeader + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+
+		let ca = decodedCookie.split(";");
+		for (let i = 0; i < ca.length; i++)	
+		{
+			let c = ca[i];
+			while (c.charAt(0) == ' ')
+			{
+				c = c.substring(1);
+			}
+			if (c.indexOf(cookieName) == 0) 
+			{
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+
+    function updateCartNumber()
+    {
+        let cCartItems = getCartStatus(cCartHeader);
+		let ca = cCartItems.split("=");
+		let count = 0;
+		if (ca[1] != "")
+		{
+       		count = ca[1].split(",").length;
+		}
+    //    console.log(count);
+        cartCount.innerHTML = count;
+	//	getCartArray();
+        return;
+    }
+	
+</script>
+
+</html>

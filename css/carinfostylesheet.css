@@ -1,0 +1,63 @@
+div.subMenuDirectory a{
+    text-decoration: none;
+    color: gray;
+}
+
+div.subMenuDirectory a:hover{
+    color: blue;
+}
+
+div.subMenuDirectory h3{
+    white-space: nowrap;
+    display: inline-block;
+}
+
+div.listingContainer{
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 5%;
+}
+
+div.listingInfoContainer h1{
+    font-size: 300%;
+}
+
+div.listingInfoContainer h2{
+    font-size: 200%;
+}
+
+div.listingInfoContainer h3{
+    font-size: 125%;
+}
+
+img.listingImage{
+    width: 100%;
+    height: 100%;
+}
+
+div.listingInfoContainer{
+    margin-left: 5%;
+}
+
+div.timeInputType input{
+    scale: 1.25;
+    margin-left: 5%;
+}
+
+button#submitToCart{
+    cursor: pointer;
+	display: inline-block;
+	background: linear-gradient(0deg, #003df5 0%, #000 100%, #ffffff 100%);
+	color: white;
+	padding: 3%;
+	font-size: 100%;
+    margin-top: 5%;
+	margin-left: 3%;
+	border: none;
+}
+
+button#submitToCart:hover{
+	cursor: pointer;
+	background: none;
+	background-color: #0007db;
+}

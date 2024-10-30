@@ -1,0 +1,40 @@
+div.logoContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, h2, h3{
+    text-align: center;
+}
+
+img.coyLogoSpecial{
+    max-width: fit-content;
+    margin-inline: auto;
+}
+
+div.returnButtonContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button.returnButton{
+    max-width: fit-content;
+    margin-inline: auto;
+    cursor: pointer;
+	background: linear-gradient(0deg, #003df5 0%, #000 100%, #ffffff 100%);
+	color: white;
+    margin-top: 2%;
+	margin-bottom: 2%;
+	padding: 0.5%;
+}
+
+button.returnButton:hover{
+    background: none;
+	background-color: #0007db;
+}

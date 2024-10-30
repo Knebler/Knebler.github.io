@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+				initial-scale=1.0">
+				
+	<title>AZoom Information</title>
+	<link rel="stylesheet" href="css/generalstylesheet.css">
+	<link rel="stylesheet" href="css/aboutpagestylesheet.css">
+</head>
+
+<body>
+	<section id="pageHead">
+		<div class="topContainer">
+			<button class="coyLogoImg" onclick="homePageOpen()"><img src="img\companylogo.png" alt="Company Logo"></button>
+	
+			<div class="topIcons">
+				<button class="dropdownIcons" id="accountLogo" onclick="accountPageOpen()"><img src="img\account.png" alt="Account Button" ></button> <!-- Add dropdown menu to show currently logged in user, if none just display a prompt for the visitor to register or log in -->
+					<div class="dropdownMenu">
+						<img src="" class="accountDropdownUserDispImg">
+						<h2 class="accountDropdownUserStatus">Not Currently Logged In</h2>
+
+					</div>
+			</div>
+			<div class="topIcons">
+				<button class="dropdownIcons" id="cartLogo" onclick="cartPageOpen()"><img src="img\grocery-store.png" alt="Cart Button"></button>
+			</div>
+			<div class="topIcons">
+				<button class="dropdownIcons" id="searchLogo" onclick="searchPageOpen()"><img src="img\search.png" alt="Search Button"></button>
+					<div class="dropdownMenu">
+						
+					</div>
+			</div>
+		</div>
+	
+		<div id="navBarContainer">
+			<ul class="headerNavBar">
+				<li><a href="homepage.html">Home Page</a></li>
+				<li><a href="rentals.html">Rental Library</a></li> <!-- Add dropdown menu to show subcategories which reflect available options on the page itself -->
+				<li class="headerNavBarRightMostLeft"><a href="services.html">Service Listings</a></li> <!-- Same thing here -->
+				<li class="headerNavBarAbout"><a href="about.html">About</a></li>
+			</ul>
+		</div>
+	</section>
+</body>
+
+<footer>
+	<section id="footerContainer">
+		<section class="footerContainer">
+			<div class="footerLinkContainer">
+				<ul class="footerNavBar"> <!-- Add in footer appendix links for legal purposes -->
+					<li><a href="#"><h3>Business Certificate</h3></a></li>
+					<li><a href="#"><h3>Legal</h3></a></li>
+					<li><a href="#"><h3>Staff Portal</h3></a></li>
+					<li><a href="#"><h3>References</h3></a></li>
+				</ul>
+			</div>
+			
+			<div class="footerSocMedandPayContainer">
+				<div class="footerSocMedLinks">
+					<a href="#"><img src="img/whatsapp.png" class="socialMediaLogo"></a>
+					<a href="#"><img src="img/instagram.png" class="socialMediaLogo"></a>
+					<a href="#"><img src="img/facebook.png" class="socialMediaLogo"></a>
+					<a href="#"><img src="img/twitter.png" class="socialMediaLogo"></a>
+				</div>
+				
+				<div class="footerPaymentLogos">
+					<img src="img/paylogos/visa.svg" class="paymentLogo">
+					<img src="img/paylogos/mastercard.svg" class="paymentLogo">
+					<img src="img/paylogos/american-express.svg" class="paymentLogo">
+					<img src="img/paylogos/payment badge_white.svg" class="paymentLogo">
+				</div>
+			</div>
+			
+	
+			
+			<div class="footerCopyrightContainer">
+				<h4> No copyright @ 2024 </h4>
+			</div>
+	</section>
+</footer>
+
+<script>
+	// Variable initialization
+	
+	// Function initialization
+	function openDirectLink(linkString)
+	{
+		window.location.href = linkString;
+	}
+	
+	function homePageOpen()
+	{
+		openDirectLink("homepage.html");
+	}
+
+	function accountPageOpen()
+	{
+		openDirectLink("loginandregister.html");
+	}
+	
+	function cartPageOpen()
+	{
+		openDirectLink("cart.html");
+	}
+	
+	function searchPageOpen()
+	{
+		openDirectLink("searchpage.html");
+	}
+
+</script>
+
+</html>

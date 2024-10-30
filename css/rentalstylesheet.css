@@ -1,0 +1,79 @@
+section#pageBody{
+    display: inline-grid;
+    grid-template-columns: 1fr 3fr
+}
+
+div.sorterContainer{
+    float: left;
+    width: 50%;
+    border: 1px;
+    border-style: solid;
+    border-color: #000000;
+    border-top: none;
+    border-bottom: none;
+}
+
+div.sorterContainer h1{
+    margin-left: 10%;
+}
+
+input[type=checkbox]{
+    margin-top: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
+    transform: scale(2.0);
+}
+
+div.row {
+    margin: 1.5% -1.5%;
+    float: right;
+}
+
+div.row,
+div.row > div.column {
+  padding: 1.5%;
+}
+
+div.column {
+    float: left;
+    width: 30%;
+    border: 1px;
+    border-color: #000000;
+    border-style: solid;
+    display: none; /* Hide all elements by default */
+    margin: 0.05%;
+}
+
+div.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+div.show {
+    display: block;
+}
+
+img.cardDisplay{
+    width: 90%;
+    height: 90%;
+    margin-left: 5%;
+}
+
+img.cardDisplay:hover{
+    transform: scale(1.05);
+}
+
+button.cardLinkButton{
+    cursor: pointer;
+	background: linear-gradient(0deg, #003df5 0%, #000 100%, #ffffff 100%);
+	color: white;
+	margin-bottom: 2%;
+	padding: 2%;
+}
+
+button.cardLinkButton:hover{
+	background: none;
+	background-color: #0007db;
+}
+

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width-device=width,
+				initial-scale=1.0">
+	
+	<title>AZoom Car Info</title>
+	<link rel="stylesheet" href="../css/generalstylesheet.css">
+	<link rel="stylesheet" href="../css/carinfostylesheet.css">
+</head>
+
+<body>
+    <section id="pageHead">
+        <div class="topContainer">
+			<button class="coyLogoImg" onclick="homePageOpen()"><img src="../img/companylogo.png" alt="Company Logo"></button>
+	
+			<div class="topIcons">
+				<button class="dropdownIcons" id="accountLogo" onclick="accountPageOpen()"><img src="../img/account.png" alt="Account Button" ></button> <!-- Add dropdown menu to show currently logged in user, if none just display a prompt for the visitor to register or log in -->
+					<div class="dropdownMenu">
+						<img src="" class="accountDropdownUserDispImg">
+						<h2 class="accountDropdownUserStatus">Guest</h2>
+					</div>
+			</div>
+			<div class="topIcons">
+				<button class="dropdownIcons" id="cartLogo" onclick="cartPageOpen()"><img src="../img/grocery-store.png" alt="Cart Button"></button>
+                <div class="cartItemContainer">
+                    <h2 id="cartItemDisplay"></h2>
+                </div>
+			</div>
+			<div class="topIcons">
+				<button class="dropdownIcons" id="searchLogo" onclick="searchPageOpen()"><img src="../img/search.png" alt="Search Button"></button>
+					<div class="dropdownMenu">
+						
+					</div>
+			</div>
+		</div>
+	
+		<div id="navBarContainer">
+			<ul class="headerNavBar">
+				<li><a href="../homepage.html">Home Page</a></li>
+				<li><a href="../rentals.html">Rental Library</a></li> <!-- Add dropdown menu to show subcategories which reflect available options on the page itself -->
+				<li class="headerNavBarRightMostLeft"><a href="../services.html">Service Listings</a></li> <!-- Same thing here -->
+				<li class="headerNavBarAbout"><a href="../about.html">About</a></li>
+			</ul>
+		</div>
+    </section>
+
+    <section id="pageBody">
+        <div class="subMenuDirectory">
+            <a href="../homepage.html"><h3 class="smdBase">Home</h3></a>
+            <h3 class="smdSeperator"> > </h3>
+            <a href="../rentals.html"><h3 class="smdMid">Rental Library</h3></a>
+            <h3 class="smdSeperator"> > </h3>
+            <h3 class="smdCurrent">BYD Seal U EV</h3>
+        </div>
+
+        <div class="listingContainer">
+            <img src="../img/vehicles/BYD/BYD_SEAL_U_EV.png" class="listingImage">
+            <div class="listingInfoContainer">
+                <h1>BYD Seal U EV</h1>   
+                <article>
+                    <h3>
+                        A write-up of the features that the Seal U EV possesses, followed by how its cost is justified by its premium offerings.
+                    </h3>
+                </article>
+                <h2> $50 / Hr </h2>
+      <!--         <form>
+                    <label for="timeTypeSelect">Choose the rental period:</label>
+                    <select name="timeTypeSelect" id="timeTypeSelect" onchange="rentalPeriodInputDisp()">
+                        <option value="dayAndHours">Single Day</option>
+                        <option value="multipleDays">Multiple Days</option>
+                    </select>
+                </form> --> 
+
+                <div class="timeInputSelectContainer">
+                    <div class="timeInputType" id="dayAndHoursInput">
+                        <h2>Start of Rental Period</h2>
+                        <input type="datetime-local" id="startInput" min="2024-11-01T00:00" max="2025-12-01T00:00" required onchange="setStartPeriodMax(), setEndPeriodMin(), updateAddToCartButton()"></br>
+                        <h2>End of Rental Period</h2>
+                        <input type="datetime-local" id="endInput" max="2025-12-01T00:00" required onchange="setStartPeriodMax(), setEndPeriodMin(), updateAddToCartButton()">
+                    </div>
+                </div>
+
+                <div class="addToCartContainer">
+                    <button id="submitToCart" onclick="addToCart(), alertCartAddedTo()">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+<footer>
+    <section class="footerContainer">
+		<div class="footerLinkContainer">
+			<ul class="footerNavBar"> <!-- Add in footer appendix links for legal purposes -->
+				<li><a href="#"><h3>Business Certificate</h3></a></li>
+				<li><a href="#"><h3>Legal</h3></a></li>
+				<li><a href="#"><h3>Staff Portal</h3></a></li>
+				<li><a href="#"><h3>References</h3></a></li>
+			</ul>
+		</div>
+		
+		<div class="footerSocMedandPayContainer">
+			<div class="footerSocMedLinks">
+				<a href="https://www.whatsapp.com/"><img src="../img/whatsapp.png" class="socialMediaLogo"></a>
+				<a href="https://www.instagram.com/"><img src="../img/instagram.png" class="socialMediaLogo"></a>
+				<a href="https://www.facebook.com/"><img src="../img/facebook.png" class="socialMediaLogo"></a>
+				<a href="https://x.com/"><img src="../img/twitter.png" class="socialMediaLogo"></a>
+			</div>
+			
+			<div class="footerPaymentLogos">
+				<img src="../img/paylogos/visa.svg" class="paymentLogo">
+				<img src="../img/paylogos/mastercard.svg" class="paymentLogo">
+				<img src="../img/paylogos/american-express.svg" class="paymentLogo">
+				<img src="../img/paylogos/payment badge_white.svg" class="paymentLogo">
+			</div>
+		</div>
+		
+
+		
+		<div class="footerCopyrightContainer">
+			<h4> No copyright @ 2024 </h4>
+		</div>
+	</section>
+</footer>
+
+<script>
+    //Initialize variables here
+    let timeInputs = document.getElementsByClassName("timeInputType");
+    let startDatetime = document.getElementById("startInput");
+    let endDatetime = document.getElementById("endInput");
+    let addToCartButton = document.getElementById("submitToCart");
+    
+
+    const cAccHeader = "cAccountUsername";
+	const cCartHeader = "cCartItems";
+    let cartCount = document.getElementById("cartItemDisplay");
+
+    updateAddToCartButton();
+    
+ //   rentalPeriodInputDisp("none");
+
+    // Functions here
+    function rentalPeriodInputDisp()
+    {
+        let selectInput = document.getElementById("timeTypeSelect");
+      //  console.log(selectInput.options[0].value);
+        let inputType = selectInput.options[selectInput.selectedIndex].value;
+        let iterator;
+
+        if (timeInputs.length < 1)
+        {
+            return;
+        }   
+
+        switch (inputType)
+        {
+            case "none":
+                {
+                    for (iterator = 0; iterator < timeInputs.length; iterator++)
+                    {
+                        timeInputs[iterator].style.display = "none";
+                    }
+                }
+                break;
+            case "daysAndHours":
+                {
+                    for (iterator = 0; iterator < timeInputs.length; iterator++)
+                    {
+                        if (timeInputs[iterator].id == "dayAndHoursInput")
+                        {
+                            timeInputs[iterator].style.display = "block";
+                        }
+                        timeInputs[iterator].style.display = "none";
+                    }
+                }
+                break;
+            case "multipleDays":
+                {
+                    for (iterator = 0; iterator < timeInputs.length; iterator++)
+                    {
+                        if (timeInputs[iterator].id == "multipleDaysInput")
+                        {
+                            timeInputs[iterator].style.display = "block";
+                        }
+                        timeInputs[iterator].style.display = "none";
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    checkCookie();
+    updateCartNumber();
+
+    	// Button functions
+	function openDirectLink(linkString)
+	{
+		window.location.href = linkString;
+	}
+	
+	function homePageOpen()
+	{
+		openDirectLink("../homepage.html");
+	}
+
+	function accountPageOpen()
+	{
+		openDirectLink("../loginandregister.html");
+	}
+	
+	function cartPageOpen()
+	{
+		openDirectLink("../cart.html");
+	}
+	
+	function searchPageOpen()
+	{
+		openDirectLink("../searchpage.html");
+	}
+
+    function setStartPeriodMax()
+    {
+        startDatetime.max = endDatetime.value;
+    }
+
+    function setEndPeriodMin()
+    {
+        endDatetime.min = startDatetime.value;
+    }
+
+    function getAccountStatus()
+	{
+		let cookieName = cAccHeader + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+
+		let ca = decodedCookie.split("=");
+		for (let i = 0; i < ca.length; i++)
+			{
+			let c = ca[i];
+			while (c.charAt(0) == ' ')
+			{
+				c = c.substring(1);
+			}
+			if (c.indexOf(cookieName) == 0)
+			{
+				return;
+			}
+		}
+
+		return;
+	}
+
+    function updateAddToCartButton()
+    {
+        if (startDatetime.value != "" && endDatetime.value != "")
+        {
+            addToCartButton.disabled = false;
+        }
+        else
+        {
+            addToCartButton.disabled = true;
+        }
+    }
+    
+    // Cookie format:
+    // cCartItems = alphard.2024-11-01T00:00.2024-12-01T00:00, vellfire.2024-11-05T12:30.2024-11-05T18:30;
+    function addToCart()
+    {
+        let cValue = 'sealuev';
+        let cCartStatusTemp = getCartStatus();
+
+        const d = new Date();
+        d.setTime(d.getTime() + (5*24*60*60*1000));
+        let expires = "expires=" + d.toUTCString();
+
+        if (cCartStatusTemp != "")
+        {
+            console.log(cCartStatusTemp);
+            let cTemp = cCartStatusTemp.split("=");
+            if (cTemp[1] != "")
+            {
+                document.cookie = cCartStatusTemp + ", " + cValue + "." + startDatetime.value + "." + endDatetime.value + ";" + expires + ";path=/";
+            }
+            else
+            {
+                document.cookie = cCartStatusTemp + cValue + "." + startDatetime.value + "." + endDatetime.value + ";" + expires + ";path=/";
+            }
+        }
+        else
+        {
+            document.cookie = cCartHeader + "=" + cValue + "." + startDatetime.value + "." + endDatetime.value + ";" + expires + ";path=/";
+        }
+        updateCartNumber();
+    }
+
+	function getCartStatus()
+    {
+		let cookieName = cCartHeader + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+
+		let ca = decodedCookie.split(";");
+		for (let i = 0; i < ca.length; i++)	
+		{
+			let c = ca[i];
+			while (c.charAt(0) == ' ')
+			{
+				c = c.substring(1);
+			}
+			if (c.indexOf(cookieName) == 0) 
+			{
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+
+    function updateCartNumber()
+    {
+        let cCartItems = getCartStatus(cCartHeader);
+		let ca = cCartItems.split("=");
+		let count = 0;
+		if (ca[1] != "")
+		{
+       		count = ca[1].split(",").length;
+		}
+    //    console.log(count);
+        cartCount.innerHTML = count;
+	//	getCartArray();
+        return;
+    }
+
+    function checkCookie()
+    {
+        let cookie = getCartStatus(cCartHeader);
+        console.log(cookie);
+    }
+
+    function alertCartAddedTo()
+    {
+        alert("Item has been added to the cart!");
+    }
+
+</script>
+
+</html>

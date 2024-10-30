@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+				initial-scale=1.0">
+				
+	<title>Cart Overview</title>
+	<link rel="stylesheet" href="css/generalstylesheet.css">
+	<link rel="stylesheet" href="css/accountinfostylesheet.css">
+</head>
+
+<body>
+	<section id="pageHead">
+		<div class="topContainer">
+			<button class="coyLogoImg" onclick="homePageOpen()"><img src="img\companylogo.png" alt="Company Logo"></button>
+
+			<div class="topIcons">
+				<button class="dropdownIcons" id="accountLogo" onclick="accountPageOpen()"><img src="img\account.png" alt="Account Button" ></button> <!-- Add dropdown menu to show currently logged in user, if none just display a prompt for the visitor to register or log in -->
+					<div class="dropdownMenu">
+						<img src="" class="accountDropdownUserDispImg">
+						<h2 class="accountDropdownUserStatus">Guest</h2>
+					</div>
+			</div>
+			<div class="topIcons">
+				<button class="dropdownIcons" id="cartLogo" onclick="cartPageOpen()"><img src="img\grocery-store.png" alt="Cart Button"></button>
+				<div class="cartItemContainer">
+                    <h2 id="cartItemDisplay"></h2>
+                </div>
+			</div>
+			<div class="topIcons">
+				<button class="dropdownIcons" id="searchLogo" onclick="searchPageOpen()"><img src="img\search.png" alt="Search Button"></button>
+				<div class="dropdownMenu">
+					
+				</div>
+			</div>
+		</div>
+
+		<div id="navBarContainer">
+			<ul class="headerNavBar">
+				<li><a href="homepage.html">Home Page</a></li>
+				<li><a href="rentals.html">Rental Library</a></li> <!-- Add dropdown menu to show subcategories which reflect available options on the page itself -->
+				<li class="headerNavBarRightMostLeft"><a href="services.html">Service Listings</a></li> <!-- Same thing here -->
+				<li class="headerNavBarAbout"><a href="about.html">About</a></li>
+			</ul>
+		</div>
+	</section>
+
+    <section id="pageBody">
+        <h1>Your purchase history</h1>
+        <div id="accountDisplay">
+            <div class="singleAccountDisplayContainer" id="singleAccountDisplayContainerBase">
+		    	<img src="img/vehicles/Toyota/Alphard_Details/vehicle_toyota_alphard_4.png" class="itemDisplay">
+		    	<h2 class="titleDisplay"></h2>
+		    	<h2 class="dateTimeRange"> Range of selected dates and times here </h2>
+	    		<button class="deleteButton" onclick="deleteButton(this)">INITIATE RETURN</button>
+	    	</div>
+        </div>
+    </section>
+</body>
+
+<footer>
+    <section class="footerContainer">
+		<div class="footerLinkContainer">
+			<ul class="footerNavBar"> <!-- Add in footer appendix links for legal purposes -->
+				<li><a href="#"><h3>Business Certificate</h3></a></li>
+				<li><a href="#"><h3>Legal</h3></a></li>
+				<li><a href="#"><h3>Staff Portal</h3></a></li>
+				<li><a href="#"><h3>References</h3></a></li>
+			</ul>
+		</div>
+		
+		<div class="footerSocMedandPayContainer">
+			<div class="footerSocMedLinks">
+				<a href="https://www.whatsapp.com/"><img src="../img/whatsapp.png" class="socialMediaLogo"></a>
+				<a href="https://www.instagram.com/"><img src="../img/instagram.png" class="socialMediaLogo"></a>
+				<a href="https://www.facebook.com/"><img src="../img/facebook.png" class="socialMediaLogo"></a>
+				<a href="https://x.com/"><img src="../img/twitter.png" class="socialMediaLogo"></a>
+			</div>
+			
+			<div class="footerPaymentLogos">
+				<img src="../img/paylogos/visa.svg" class="paymentLogo">
+				<img src="../img/paylogos/mastercard.svg" class="paymentLogo">
+				<img src="../img/paylogos/american-express.svg" class="paymentLogo">
+				<img src="../img/paylogos/payment badge_white.svg" class="paymentLogo">
+			</div>
+		</div>
+		
+
+		
+		<div class="footerCopyrightContainer">
+			<h4> No copyright @ 2024 </h4>
+		</div>
+	</section>
+</footer>
+
+<script>
+    // Variable Initialization
+	const cAccHeader = "cAccountUsername";
+	const cCartHeader = "cCartItems";
+	let cartCount = document.getElementById("cartItemDisplay");
+    let accountDisplayParent = document.getElementById("accountDisplay");
+    let accountItemArray = [];
+    let displayTemplate = document.getElementById("singleAccountDisplayContainerBase");
+
+    // Logic
+    updateCartNumber();
+    getAccountArray();
+
+    for (let i = 0; i < accountItemArray.length; i++)	
+	{
+		console.log(accountItemArray[i]);
+		if (accountItemArray[i] != "")
+		{
+			constructAccountCard(accountItemArray[i]);
+		}
+	} 
+
+    
+
+    // Functions
+    function openDirectLink(linkString)
+	{
+		window.location.href = linkString;
+	}
+	
+	function homePageOpen()
+	{
+		openDirectLink("homepage.html");
+	}
+
+	function accountPageOpen()
+	{
+		openDirectLink("loginandregister.html");
+	}
+	
+	function cartPageOpen()
+	{
+		openDirectLink("cart.html");
+	}
+	
+	function searchPageOpen()
+	{
+		openDirectLink("searchpage.html");
+	}
+
+	function accountInfoPageOpen()
+	{
+		openDirectLink("accountinfo.html");
+	}
+
+    function updateCartNumber()
+    {
+        let cCartItems = getCartStatus();
+		let ca = cCartItems.split("=");
+		let count = 0;
+		if (ca[1] != "")
+		{
+       		count = ca[1].split(",").length;
+		}
+    //    console.log(count);
+        cartCount.innerHTML = count;
+	//	getCartArray();
+        return;
+    }
+
+	function getCartStatus()
+    {
+		let cookieName = cCartHeader + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+        
+		let ca = decodedCookie.split(";");
+		for (let i = 0; i < ca.length; i++)	
+		{
+			let c = ca[i];
+			while (c.charAt(0) == ' ')
+			{
+				c = c.substring(1);
+			}
+			if (c.indexOf(cookieName) == 0) 
+			{
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+
+    function getAccountStatus()
+    {
+		let cookieName = cAccHeader + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+        console.log(decodedCookie);
+		let ca = decodedCookie.split(";");
+		for (let i = 0; i < ca.length; i++)	
+		{
+			let c = ca[i];
+			while (c.charAt(0) == ' ')
+			{
+				c = c.substring(1);
+			}
+			if (c.indexOf(cookieName) == 0) 
+			{
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+
+    function constructAccountCard(itemArray)
+	{
+		let singleCardArray = itemArray.split(".").map(item => item.trim());
+	//	console.log(singleCardArray);
+
+		let itemType = singleCardArray[0];
+		let itemStartPeriod = singleCardArray[1];
+		let itemEndPeriod = singleCardArray[2];
+	//	console.log(displayTemplate);
+
+		let clone = displayTemplate.cloneNode(true);
+		clone.style.display = "block";
+		for (let i = 0; i < clone.childNodes.length; i++)
+		{
+			switch (clone.childNodes[i].className)
+			{
+				case "itemDisplay":
+					switch (itemType)
+					{
+						case "atto3":
+							clone.childNodes[i].src = "img/vehicles/BYD/BYD_ATTO3.png";
+							break;
+						case "dolphin":
+							clone.childNodes[i].src = "img/vehicles/BYD/BYD_DOLPHIN.png";
+							break;
+						case "han":
+							clone.childNodes[i].src = "img/vehicles/BYD/BYD_HAN.png";
+							break;
+						case "sealuev":
+							clone.childNodes[i].src = "img/vehicles/BYD/BYD_SEAL_U_EV.png";
+							break;
+						case "seal":
+							clone.childNodes[i].src = "img/vehicles/BYD/BYD_SEAL.png";
+							break;
+						case "sealion":
+							clone.childNodes[i].src = "img/vehicles/BYD/BYD_SEALION_7.png";
+							break;
+						case "tang":
+							clone.childNodes[i].src = "img/vehicles/BYD/BYD_TANG_2024.png";
+							break;
+					}
+					break;
+				case "titleDisplay":
+					switch (itemType)
+					{
+						case "atto3":
+							clone.childNodes[i].innerHTML = "BYD Atto 3";
+							break;
+						case "dolphin":
+							clone.childNodes[i].innerHTML = "BYD Dolphin";
+							break;
+						case "han":
+							clone.childNodes[i].innerHTML = "BYD Han";
+							break;
+						case "sealuev":
+							clone.childNodes[i].innerHTML = "BYD Seal U EV";
+							break;
+						case "seal":
+							clone.childNodes[i].innerHTML = "BYD Seal";
+							break;
+						case "sealion":
+							clone.childNodes[i].innerHTML = "BYD Sealion";
+							break;
+						case "tang":
+							clone.childNodes[i].innerHTML = "BYD Tang 2024";
+							break;
+					}
+					break;
+				case "dateTimeRange":
+					clone.childNodes[i].innerHTML ="Selected Rental Period: " + itemStartPeriod + "--" + itemEndPeriod;
+					break;
+				case "costDisplay":
+					
+					break;
+				default:
+					break;
+			}
+		}
+		accountDisplayParent.appendChild(clone);
+		
+	}
+
+    function getAccountArray()
+	{
+		let cAccItems = getAccountStatus().split("=");
+		//console.log(cCartItems);
+		let cCTemp = cAccItems[1];
+		// cCartItems[1] contains the important data
+		//console.log(cCartItems);
+		if (cCTemp != "")
+		{
+			let cSplitterTemp = cCTemp.split(",").map(item => item.trim())
+			//console.log(cSplitterTemp);
+			accountItemArray = cSplitterTemp;
+		}
+	}
+
+    function deleteButton(child)
+	{
+		let parent = child.parentNode.parentNode;
+
+		let index = Array.prototype.indexOf.call(parent.childNodes, child);
+		if (accountItemArray.length > 1)
+        {
+		    accountItemArray.splice(index, 1);
+        }
+        else
+        {
+            accountItemArray = [];
+        }
+        updateAccountCookie();
+		openDirectLink("confirmreturn.html");
+	}
+
+    function updateAccountCookie()
+	{
+		let cookieName = cAccHeader + "=";
+
+		const d = new Date();
+        d.setTime(d.getTime() + (5*24*60*60*1000));
+        let expires = "expires=" + d.toUTCString();
+
+		let aggregateValues= "";
+		for (let i = 0; i < accountItemArray.length; i++)
+		{
+			aggregateValues = aggregateValues + accountItemArray[i] + ",";
+		}
+		aggregateValues = aggregateValues.substring(0, aggregateValues.length - 1);
+
+		document.cookie = cookieName + aggregateValues;
+	}
+
+</script>
+
+</html>

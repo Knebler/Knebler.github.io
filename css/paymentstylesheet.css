@@ -1,0 +1,102 @@
+button.returnToCart{
+    cursor: pointer;
+	background: linear-gradient(0deg, #003df5 0%, #000 100%, #ffffff 100%);
+	color: white;
+    margin-left: 3%;
+    margin-top: 2%;
+	margin-bottom: 2%;
+	padding: 0.5%;
+}
+
+button.returnToCart:hover{
+	background: none;
+	background-color: #0007db;
+}
+
+div.locationSelectContainer{
+    margin-left: 3%;
+    margin-top: 1%;
+}
+
+form.locationField{
+    margin-left: 20%;
+    scale: 1.5;
+}
+
+div.locationSelectContainer h1{
+    font-size: 300%;
+}
+
+
+div.detailFieldsContainer{
+    margin-left: 3%;
+    margin-top: 1%;
+}
+
+form.detailField{
+    margin-left: 20%;
+    scale: 1.5;
+}
+
+div.detailFieldsContainer h1{
+    font-size: 300%;
+}
+
+div.cartReviewContainer h1{
+    font-size: 300%;
+    margin-left: 3%;
+    margin-top: 5%;
+}
+
+div#singleCartDisplayContainerBase{
+    display: none;
+}
+
+div#singleCartDisplayContainerBase{
+    display: none;
+    margin-top: 1%;
+    border: 4px ridge #000000;
+}
+
+div#singleCartDisplayContainerBase img{
+    margin-left: 30%;
+}
+
+div#singleCartDisplayContainerBase h2{
+    text-align: center;
+}
+
+div.totalCostContainer h1{
+    font-size: 300%;
+    margin-left: 3%;
+}
+
+div.paymentFieldsContainer{
+    margin-left: 3%;
+    margin-top: 1%;
+}
+
+form.cCardField{
+    margin-left: 20%;
+    scale: 1.5;
+}
+
+div.paymentFieldsContainer h1{
+    font-size: 300%;
+}
+
+button.detailsConfirm{
+    cursor: pointer;
+	background: linear-gradient(0deg, #003df5 0%, #000 100%, #ffffff 100%);
+	color: white;
+    margin-left: 47%;
+    margin-top: 5%;
+	margin-bottom: 2%;
+	padding: 0.5%;
+    scale: 1.5;
+}
+
+button.detailsConfirm:hover{
+    background: none;
+	background-color: #0007db;
+}

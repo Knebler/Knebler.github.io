@@ -1,0 +1,162 @@
+section#pageHead{
+	background-image: url("../img/topbackground.jpeg");
+	background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+div.attractiveDisp{
+	max-width: 1000px;
+	position: relative;
+	margin: auto;
+}
+
+.attractiveDispPrev, .attractiveDispNext{
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select:none;
+}
+
+img.attractiveDispImg {
+	width:100%;
+}
+
+h1.attractiveDispCaptionText{
+	cursor: context-menu;
+	color: white;
+	font-size: 400%;
+	margin: 0;
+	margin-top: -5%;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+button.attractiveDispSlidesButton{
+	cursor: pointer;
+	display: inline-block;
+	background: linear-gradient(0deg, #003df5 0%, #000 100%, #ffffff 100%);
+	color: white;
+	padding: 3%;
+	font-size: 100%;
+	margin-left: 12%;
+	border: none;
+}
+
+button.attractiveDispSlidesButton:hover{
+	cursor: pointer;
+	background: none;
+	background-color: #0007db;
+}
+
+
+.attractiveDispNext{
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+.attractiveDispPrev:hover, .attractiveDispNext:hover{
+	background-color: rgba(0,0,0,8);
+}
+
+span.attractiveDispDot{
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+div.fade{
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+
+@keyframes fade{
+	from {opacity: 0.4}
+	to {opacity: 1}
+}
+
+h1.sectionDividingText{
+	float: center;
+	text-align: center;
+	width: 100%;
+}
+
+div.miniListingContainer{
+	overflow: auto;
+	white-space: nowrap;
+	height: 40%
+}
+
+div.singleMLCCard{
+	display: inline-block;
+	color: black;
+	border-width: 3px;
+	border-color: black;
+	border-style: solid;
+	width: 30%;
+	height: 100%;
+	margin-right: 5%;
+	text-align: center;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+div.singleMLCCard img{
+	width: 100%;
+	height: 100%;
+	float: center;
+}
+
+div.singleMLCCard h2{
+	font-size: 100%;
+}
+
+div.reviewContainer{
+	overflow: auto;
+	white-space: nowrap;
+}
+
+div.singleRCCard{
+	display: inline-block;
+	margin-left: 3%;
+	width: 30%;
+	border-width: 2px;
+	border-color: #000;
+	border-style: solid;
+}
+
+div.singleRCCard h2, div.singleRCCard h3, div.reviewContainerParagraph{
+	margin-left: 2%;
+}
+
+div.reviewContainerParagraph{
+	width: 100%;
+	display: inline-block;
+	word-wrap: break-word;
+	white-space: pre-line;
+}
+
+button.singleMLCCardLinkButton{
+	cursor: pointer;
+	background: linear-gradient(0deg, #003df5 0%, #000 100%, #ffffff 100%);
+	color: white;
+	margin-bottom: 2%;
+	padding: 2%;
+}
+
+button.singleMLCCardLinkButton:hover{
+	background: none;
+	background-color: #0007db;
+}
+
+
